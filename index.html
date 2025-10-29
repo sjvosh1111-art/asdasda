@@ -3,209 +3,209 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>K-Food Promo — Landing Page Concept</title>
-  <meta name="description" content="K-Food 홍보 랜딩 페이지 (타겟: 한국 문화에 관심 있는 외국인). 미니멀 · 전문적 톤의 UX/UI 기획 + 최신 뉴스 첨부." />
+  <title>K-Food Showcase — Minimal & Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#ffffff; --surface:#f7fbfb; --text:#0b1220; --muted:#6b7280; --accent:#0ea5a4;
-      --radius:12px; --gap:20px; font-family:Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --accent:#111827;
+      --card:#f8fafc;
+      --glass: rgba(255,255,255,0.6);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
-    .wrap{max-width:1100px;margin:32px auto;padding:28px;background:linear-gradient(180deg,#fff,#fbffff);border-radius:14px;box-shadow:0 10px 30px rgba(13,24,24,0.06);}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#e6fffb,#ffffff);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent)}
-    h1{font-size:20px;margin:0}
-    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
-    .section{margin-top:18px;padding:18px;border-radius:12px;background:var(--surface)}
-    .section h2{margin:0 0 8px;font-size:16px}
-    .core-copy{font-weight:700;margin-bottom:8px}
-    .ideas{color:var(--muted);line-height:1.6;font-size:14px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
-    .card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(13,24,24,0.04)}
-    .product-img{height:140px;background:#f3f7f7;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
-    .cta{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:var(--accent);color:white;text-decoration:none;font-weight:600}
-    .news-list{list-style:none;padding:0;margin:0}
-    .news-item{padding:10px 12px;border-radius:8px;background:white;margin-bottom:10px;display:flex;flex-direction:column;gap:6px;box-shadow:0 6px 14px rgba(13,24,24,0.03)}
-    .muted{color:var(--muted);font-size:13px}
-    footer{margin-top:20px;color:var(--muted);font-size:13px}
-    a.plain{color:inherit;text-decoration:none}
-    @media(max-width:720px){.wrap{margin:16px;padding:16px}}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .container{max-width:1100px;margin:36px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,#ffecd2,#fcb69f);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;
+      box-shadow:0 6px 18px rgba(16,24,40,0.06);
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500}
+    .hero{display:flex;gap:32px;align-items:center;margin-top:36px}
+    .hero-left{flex:1}
+    .eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+    h1{font-size:44px;margin:10px 0 8px;line-height:1.05}
+    p.lead{color:var(--muted);font-size:17px;margin:0 0 18px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;font-weight:600}
+    .stats{display:flex;gap:14px;margin-top:20px}
+    .stat{background:var(--card);padding:12px;border-radius:10px;min-width:120px;text-align:center}
+    .stat .num{font-weight:700;font-size:18px}
+    .hero-right{width:360px;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+    .hero-right img{display:block;width:100%;height:100%;object-fit:cover}
+    section{margin-top:48px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,#fff,var(--glass));border:1px solid #eef2f7;padding:18px;border-radius:12px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .news-list{display:flex;flex-direction:column;gap:12px}
+    .news-item{display:flex;gap:14px;align-items:flex-start;padding:12px;border-radius:10px;border:1px solid #f1f5f9;background:#fff}
+    .news-thumb{flex:0 0 110px;height:70px;border-radius:8px;overflow:hidden}
+    .news-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .news-content{flex:1}
+    .news-meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+    .footer{margin-top:48px;padding-top:18px;border-top:1px solid #eef2f7;color:var(--muted);font-size:14px}
+    a.readmore{color:#0b63ff;text-decoration:none;font-weight:600}
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{flex-direction:column}
+      .hero-right{width:100%}
+    }
+    @media (max-width:600px){
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      h1{font-size:28px}
+    }
   </style>
 </head>
 <body>
-  <main class="wrap" role="main" aria-labelledby="main-title">
+  <div class="container">
     <header>
-      <div class="logo" aria-hidden="true">K-FOOD</div>
-      <div>
-        <h1 id="main-title">K-Food Promo — Landing Page Concept</h1>
-        <p class="lead">Target: foreigners curious about Korean culture · Tone: Minimal & Professional</p>
-      </div>
-    </header>
-
-    <!-- Mandatory brand phrase -->
-    <section class="section" aria-label="brand-statement">
-      <h2>Brand Statement (required)</h2>
-      <div class="core-copy">빙그레는 국민의 건강과 행복을 위해 최상의 고객 가치를 만듭니다.</div>
-      <div class="ideas">
-        Show this sentence in Korean and English near the top (under hero) and again in the footer. English example: <em>"Binggrae creates the highest customer value for the health and happiness of the people."</em>
-      </div>
-    </section>
-
-    <!-- Hero -->
-    <section class="section" aria-label="hero">
-      <h2>Hero — First Impression</h2>
-      <div class="core-copy">Core copy: <strong>“Taste Korea — Tradition meets modern delight”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>Layout: Split hero — left: large clean product photograph (demo image allowed), right: short headline, subcopy + 2 CTAs (Explore Products / See Recipes).</li>
-          <li>Visual: Highlight two icons/products: <strong>Banana Milk</strong> and <strong>Melona</strong> (these must appear in hero or first fold).</li>
-          <li>Microcopy: language switcher (EN default), accessibility hint, and small trust line referencing Korea's rising K-Food exports (news-backed — see News section).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section class="section" aria-label="products">
-      <h2>Products — Signature & Category Showcase</h2>
-      <div class="core-copy">Core copy: <strong>“Iconic & Contemporary — From Banana Milk to Melona”</strong></div>
-      <div class="ideas">
-        <div class="grid" role="list">
-          <article class="card" role="listitem" aria-label="Banana Milk">
-            <div class="product-img">Banana Milk (visual demo)</div>
-            <div style="margin-top:10px;font-weight:700">Banana Milk</div>
-            <div class="muted">Creamy, nostalgic dairy drink — widely exported and loved.</div>
-            <a class="cta" href="#recipes">Try a Recipe</a>
-          </article>
-
-          <article class="card" role="listitem" aria-label="Melona">
-            <div class="product-img">Melona (visual demo)</div>
-            <div style="margin-top:10px;font-weight:700">Melona</div>
-            <div class="muted">Melon-flavored ice bar with global presence in convenience stores & retailers.</div>
-            <a class="cta" href="#products">Learn More</a>
-          </article>
-
-          <article class="card" role="listitem" aria-label="Categories">
-            <div class="product-img">Snacks · Dairy · Drinks</div>
-            <div style="margin-top:10px;font-weight:700">Categories</div>
-            <div class="muted">Ice cream, dairy, snacks, beverages, and health-oriented foods — all framed as K-Food.</div>
-            <a class="cta" href="#catalog">Explore Catalog</a>
-          </article>
+      <div class="brand">
+        <div class="logo">KF</div>
+        <div>
+          <div style="font-weight:700">K-Food Showcase</div>
+          <div style="font-size:12px;color:var(--muted)">Taste. Culture. Story.</div>
         </div>
       </div>
-    </section>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <!-- Story / K-Food context -->
-    <section class="section" aria-label="story">
-      <h2>K-Food Story & Positioning</h2>
-      <div class="core-copy">Core copy: <strong>“Tradition + Innovation — a modern K-Food narrative”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>Short editorial blocks explaining fermentation heritage, seasonal snacks, and how K-Food fits into global trends (health, convenience, fusion).</li>
-          <li>Include short explainer tiles (e.g., "Why K-Food now?", "Health & fermentation", "Street food → Global plates").</li>
-        </ul>
+    <main>
+      <section class="hero" id="about" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <div class="eyebrow">Discover K-Food</div>
+          <h1 id="hero-title">Korean food — modern, accessible, global</h1>
+          <p class="lead">A curated showcase for international audiences: quick facts, real-world news, and approachable recipes that introduce Korean flavors with context and credibility.</p>
+          <a class="cta" href="#news">See recent K-Food news</a>
+
+          <div class="stats" aria-hidden="true">
+            <div class="stat"><div class="num">8.5B+</div><div style="font-size:13px;color:var(--muted)">K-Food exports (YTD)</div></div>
+            <div class="stat"><div class="num">Global</div><div style="font-size:13px;color:var(--muted)">Available in many markets</div></div>
+            <div class="stat"><div class="num">Authentic</div><div style="font-size:13px;color:var(--muted)">From kimchi to ramen</div></div>
+          </div>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+          <!-- demo image -->
+          <img src="https://images.unsplash.com/photo-1604908177223-e8b37a7f6b2c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=demo" alt="Korean food plating">
+        </div>
+      </section>
+
+      <!-- Simple feature grid -->
+      <section aria-label="Why K-Food">
+        <div class="grid" role="list">
+          <div class="card" role="listitem">
+            <h3>Authenticity with adaptability</h3>
+            <p>Traditional techniques meet modern convenience — from fermented staples to instant ramyeon innovations.</p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Global reach</h3>
+            <p>K-Food products and restaurants are expanding worldwide thanks to demand for bold, approachable flavors.</p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Culture-led growth</h3>
+            <p>Music, film, and media (Hallyu) amplify culinary curiosity — making food a gateway to culture.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- News section: real articles included -->
+      <section id="news" aria-label="Latest K-Food news">
+        <h2 style="margin:0 0 12px">Latest K-Food news</h2>
+        <p style="margin:0 0 18px;color:var(--muted);max-width:75%">
+          Below are curated, recent news items about K-Food's global performance and cultural impact. (Sources are linked.)</p>
+
+        <div class="news-list">
+          <!-- News item 1 -->
+          <article class="news-item" aria-labelledby="n1">
+            <div class="news-thumb" aria-hidden="true">
+              <img src="https://via.placeholder.com/220x140?text=K-Food+Exports" alt="">
+            </div>
+            <div class="news-content">
+              <div class="news-meta">Oct 29, 2025 — KED Global</div>
+              <h3 id="n1" style="margin:0 0 6px;font-size:16px">Korean food exports hit record $8.5 bn in Jan–Sept, led by ramen & processed foods</h3>
+              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
+                South Korea's food exports reached an all-time high in the first nine months of 2025, with processed foods (instant noodles, packaged meals) leading growth due to strong global demand.
+              </p>
+              <a class="readmore" href="https://www.kedglobal.com/economy/newsView/ked202510290004" target="_blank" rel="noopener">Read original report ↗</a>
+            </div>
+          </article>
+
+          <!-- News item 2 -->
+          <article class="news-item" aria-labelledby="n2">
+            <div class="news-thumb" aria-hidden="true">
+              <img src="https://via.placeholder.com/220x140?text=Korea+Herald" alt="">
+            </div>
+            <div class="news-content">
+              <div class="news-meta">Oct 28, 2025 — The Korea Herald (Yonhap)</div>
+              <h3 id="n2" style="margin:0 0 6px;font-size:16px">K-Food exports through September hit record high</h3>
+              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
+                Customs data shows an increase in shipments to the U.S. and APEC economies; processed foods account for the biggest share of exports.
+              </p>
+              <a class="readmore" href="https://www.koreaherald.com/article/10602894" target="_blank" rel="noopener">Read original article ↗</a>
+            </div>
+          </article>
+
+          <!-- News item 3 -->
+          <article class="news-item" aria-labelledby="n3">
+            <div class="news-thumb" aria-hidden="true">
+              <img src="https://via.placeholder.com/220x140?text=KBS+World" alt="">
+            </div>
+            <div class="news-content">
+              <div class="news-meta">Oct 28, 2025 — KBS World</div>
+              <h3 id="n3" style="margin:0 0 6px;font-size:16px">K-Food exports through September hit $8.48 billion — record</h3>
+              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
+                Official reporting notes processed foods and instant noodles as top contributors to export growth in 2025.
+              </p>
+              <a class="readmore" href="https://world.kbs.co.kr/service/news_view.htm?Seq_Code=196953&lang=e" target="_blank" rel="noopener">Read original report ↗</a>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+      <!-- Gallery / demo images -->
+      <section id="gallery" aria-label="Gallery">
+        <h2 style="margin:16px 0">Gallery (demo images)</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=800&auto=format&fit=crop&s=demo" alt="dish" style="width:100%;height:200px;object-fit:cover"></div>
+          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1543352634-ae0c3bd7f1a1?q=80&w=800&auto=format&fit=crop&s=demo" alt="ingredients" style="width:100%;height:200px;object-fit:cover"></div>
+          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1604908177223-e8b37a7f6b2c?q=80&w=800&auto=format&fit=crop&s=demo" alt="table" style="width:100%;height:200px;object-fit:cover"></div>
+        </div>
+      </section>
+
+      <div class="footer" id="contact">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+          <div>
+            <div style="font-weight:700">K-Food Showcase</div>
+            <div style="color:var(--muted);font-size:13px">For international audiences — curated by you</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:13px;color:var(--muted)">Sources: KED Global, Korea Herald (Yonhap), KBS World.</div>
+            <div style="margin-top:8px"><a href="#" style="text-decoration:none;color:var(--muted)">Privacy</a> · <a href="#" style="text-decoration:none;color:var(--muted)">Credits</a></div>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <!-- Recipes -->
-    <section id="recipes" class="section" aria-label="recipes">
-      <h2>Recipes & Quick How-tos</h2>
-      <div class="core-copy">Core copy: <strong>“Simple K-Food recipes using Binggrae favorites”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>Recipe cards (photo, 3 steps) — example: Banana Milk Smoothie, Melona Parfait. Include short video thumbnails (demo assets fine).</li>
-          <li>Buttons for "Print", "Save", and "Share" to encourage social spread (OG tags & structured data recommended).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Store locator / Buy -->
-    <section id="catalog" class="section" aria-label="store-locator">
-      <h2>Where to Buy — Global Reach</h2>
-      <div class="core-copy">Core copy: <strong>“Find K-Food near you — stores & online”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>Interactive store finder (country selector → city → store list). Show which signature items (Banana Milk / Melona) are stocked.</li>
-          <li>Quick links to major international retailers when available (Costco, local convenience chains) and info about export expansion.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Campaign / Social -->
-    <section class="section" aria-label="campaigns">
-      <h2>Campaigns & Social Proof</h2>
-      <div class="core-copy">Core copy: <strong>“#TasteKorea — share your K-Food moment”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>SNS feed embed (Instagram / TikTok hashtag stream), UGC gallery, contest CTA to drive sampling and recipe shares.</li>
-          <li>Localized campaign tiles per region (language, prize, partner retailer).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- News (actual articles fetched and attached) -->
-    <section class="section" aria-label="news">
-      <h2>News & Context — Recent coverage (selected)</h2>
-      <p class="muted">Below are curated news items to anchor the landing page's credibility; keep these as live links so content managers can update snippets automatically.</p>
-
-      <ul class="news-list" aria-live="polite">
-        <li class="news-item">
-          <a class="plain" href="https://www.koreaherald.com/article/10603151" target="_blank" rel="noopener noreferrer">
-            <strong>K-food exports hit record driven by US demand</strong>
-          </a>
-          <div class="muted">Processed foods led exports, showing strong global appetite for Korean packaged foods. :contentReference[oaicite:0]{index=0}</div>
-        </li>
-
-        <li class="news-item">
-          <a class="plain" href="https://www.foodnavigator-asia.com/Article/2024/12/12/binggrae-eyes-australia-as-key-market-for-global-expansion/" target="_blank" rel="noopener noreferrer">
-            <strong>Binggrae eyes Australia as key market for global expansion</strong>
-          </a>
-          <div class="muted">Binggrae reported tripled sales in some European Asian-mart channels and is expanding Melona and ice bar lines to overseas markets. :contentReference[oaicite:1]{index=1}</div>
-        </li>
-
-        <li class="news-item">
-          <a class="plain" href="https://biz.chosun.com/en/en-retail/2025/10/27/BJTVHCVA35GOPIPFFYNBP7G2AI/" target="_blank" rel="noopener noreferrer">
-            <strong>Binggrae expands banana milk exports with sterilized product</strong>
-          </a>
-          <div class="muted">New sterilized banana milk SKUs increase shelf-stable exports to over 30 countries. :contentReference[oaicite:2]{index=2}</div>
-        </li>
-
-        <li class="news-item">
-          <a class="plain" href="https://world.kbs.co.kr/service/news_view.htm?Seq_Code=196953&lang=e" target="_blank" rel="noopener noreferrer">
-            <strong>K-Food exports through September hit record ~$8.48B</strong>
-          </a>
-          <div class="muted">Latest national export figures show record growth, reinforcing the global K-Food wave. :contentReference[oaicite:3]{index=3}</div>
-        </li>
-
-        <li class="news-item">
-          <a class="plain" href="https://www.washingtonpost.com/food/2025/03/17/kimbap-korean-cuisine-globally-popular/" target="_blank" rel="noopener noreferrer">
-            <strong>Kimbap example: Korean dishes gaining mainstream traction</strong>
-          </a>
-          <div class="muted">Coverage of kimbap's international popularity illustrates how media/entertainment boosts food trends. :contentReference[oaicite:4]{index=4}</div>
-        </li>
-      </ul>
-
-      <div class="ideas" style="margin-top:8px">
-        <strong>Editorial note:</strong> Display each news item with a published date and publisher logo on the live site; refresh programmatically (RSS or News API) to keep the landing page current.
-      </div>
-    </section>
-
-    <!-- Metrics & Launch checklist -->
-    <section class="section" aria-label="metrics">
-      <h2>Metrics & Launch Checklist</h2>
-      <div class="core-copy">Core copy: <strong>“Measure to improve”</strong></div>
-      <div class="ideas">
-        <ul>
-          <li>KPI suggestions: country visits, product detail CTR (Banana Milk / Melona), recipe play rate, hashtag uses, store-locator clicks.</li>
-          <li>Pre-launch: multi-language proofing, GDPR/region privacy, mobile UX testing, CDN image pipeline, SEO (schema for products & recipes).</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer role="contentinfo">
-      <div class="muted">Design tone: Minimal · Professional. Images are demo placeholders; replace with approved hero & product photography. © K-Food Promo Concept</div>
-      <div style="margin-top:8px" class="muted">Sources: curated news used above to reflect current K-Food trends and Binggrae activity. :contentReference[oaicite:5]{index=5}</div>
-    </footer>
-  </main>
+    </main>
+  </div>
 </body>
 </html>

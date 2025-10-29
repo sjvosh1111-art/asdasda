@@ -1,211 +1,247 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>K-Food Showcase — Minimal & Professional</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>달러 환율 | 실시간 (데모)</title>
   <style>
-    :root{
-      --bg:#ffffff;
-      --muted:#6b7280;
-      --accent:#111827;
-      --card:#f8fafc;
-      --glass: rgba(255,255,255,0.6);
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    .container{max-width:1100px;margin:36px auto;padding:24px;}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    /* 미니멀, 네이버 환율 스타일에서 영감을 받은 깔끔한 레이아웃 */
+    :root{--bg:#f6f7f8;--card:#fff;--muted:#6b6b6b;--accent:#2b9348}
+    *{box-sizing:border-box;font-family:Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    body{margin:0;background:var(--bg);color:#111}
+    header{background:#fff;border-bottom:1px solid #e6e6e6;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{
-      width:56px;height:56px;border-radius:10px;
-      background:linear-gradient(135deg,#ffecd2,#fcb69f);
-      display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;
-      box-shadow:0 6px 18px rgba(16,24,40,0.06);
-    }
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500}
-    .hero{display:flex;gap:32px;align-items:center;margin-top:36px}
-    .hero-left{flex:1}
-    .eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-    h1{font-size:44px;margin:10px 0 8px;line-height:1.05}
-    p.lead{color:var(--muted);font-size:17px;margin:0 0 18px}
-    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:#111827;color:#fff;text-decoration:none;font-weight:600}
-    .stats{display:flex;gap:14px;margin-top:20px}
-    .stat{background:var(--card);padding:12px;border-radius:10px;min-width:120px;text-align:center}
-    .stat .num{font-weight:700;font-size:18px}
-    .hero-right{width:360px;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.08)}
-    .hero-right img{display:block;width:100%;height:100%;object-fit:cover}
-    section{margin-top:48px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:linear-gradient(180deg,#fff,var(--glass));border:1px solid #eef2f7;padding:18px;border-radius:12px}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .news-list{display:flex;flex-direction:column;gap:12px}
-    .news-item{display:flex;gap:14px;align-items:flex-start;padding:12px;border-radius:10px;border:1px solid #f1f5f9;background:#fff}
-    .news-thumb{flex:0 0 110px;height:70px;border-radius:8px;overflow:hidden}
-    .news-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-    .news-content{flex:1}
-    .news-meta{font-size:13px;color:var(--muted);margin-bottom:6px}
-    .footer{margin-top:48px;padding-top:18px;border-top:1px solid #eef2f7;color:var(--muted);font-size:14px}
-    a.readmore{color:#0b63ff;text-decoration:none;font-weight:600}
-    @media (max-width:900px){
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .hero{flex-direction:column}
-      .hero-right{width:100%}
-    }
-    @media (max-width:600px){
-      .grid{grid-template-columns:1fr}
-      nav{display:none}
-      h1{font-size:28px}
-    }
+    .logo{font-weight:700;font-size:18px}
+    .search{opacity:.9;color:var(--muted);font-size:13px}
+
+    main{max-width:1100px;margin:28px auto;padding:0 20px}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+
+    .card{background:var(--card);border-radius:10px;padding:18px;box-shadow:0 6px 20px rgba(20,20,20,0.03)}
+    .rate-row{display:flex;align-items:center;justify-content:space-between}
+    .pair{font-size:18px;font-weight:600}
+    .rate{font-size:36px;font-weight:700}
+    .change{font-size:14px;margin-left:10px}
+
+    .meta{color:var(--muted);font-size:13px;margin-top:8px}
+    .small{font-size:13px;color:var(--muted)}
+
+    .news-list{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+    .news-item{display:flex;gap:12px;align-items:flex-start}
+    .news-thumb{width:120px;height:72px;flex:0 0 120px;border-radius:6px;object-fit:cover;background:#efefef}
+    .news-body{flex:1}
+    .news-title{font-weight:600;font-size:14px;margin-bottom:6px}
+    .news-source{font-size:12px;color:var(--muted)}
+
+    footer{max-width:1100px;margin:18px auto;color:var(--muted);font-size:13px;padding:0 20px}
+
+    /* responsive */
+    @media (max-width:880px){.grid{grid-template-columns:1fr} .news-thumb{width:100px;height:64px}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">KF</div>
-        <div>
-          <div style="font-weight:700">K-Food Showcase</div>
-          <div style="font-size:12px;color:var(--muted)">Taste. Culture. Story.</div>
-        </div>
-      </div>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <header>
+    <div class="brand">
+      <div class="logo">N-EX · 환율 데모</div>
+      <div class="search">네이버 환율 느낌의 UI — 한국인 미국장 투자자용</div>
+    </div>
+    <div class="meta" id="header-time">로딩중...</div>
+  </header>
 
-    <main>
-      <section class="hero" id="about" aria-labelledby="hero-title">
-        <div class="hero-left">
-          <div class="eyebrow">Discover K-Food</div>
-          <h1 id="hero-title">Korean food — modern, accessible, global</h1>
-          <p class="lead">A curated showcase for international audiences: quick facts, real-world news, and approachable recipes that introduce Korean flavors with context and credibility.</p>
-          <a class="cta" href="#news">See recent K-Food news</a>
-
-          <div class="stats" aria-hidden="true">
-            <div class="stat"><div class="num">8.5B+</div><div style="font-size:13px;color:var(--muted)">K-Food exports (YTD)</div></div>
-            <div class="stat"><div class="num">Global</div><div style="font-size:13px;color:var(--muted)">Available in many markets</div></div>
-            <div class="stat"><div class="num">Authentic</div><div style="font-size:13px;color:var(--muted)">From kimchi to ramen</div></div>
+  <main>
+    <div class="grid">
+      <section>
+        <div class="card" id="rate-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="pair">미국 달러 (USD) → 원 (KRW)</div>
+              <div class="meta" id="rate-updated">업데이트: --</div>
+            </div>
+            <div style="text-align:right">
+              <div class="rate" id="rate">--</div>
+              <div style="display:flex;justify-content:flex-end;align-items:center">
+                <div class="change" id="rate-change">--</div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="hero-right" aria-hidden="true">
-          <!-- demo image -->
-          <img src="https://images.unsplash.com/photo-1604908177223-e8b37a7f6b2c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=demo" alt="Korean food plating">
-        </div>
-      </section>
+          <div style="margin-top:16px" class="small">환율 출처: <strong id="source">네이버환율 (프록시 필요)</strong> · 자동 갱신 간격: <span id="interval">30초</span></div>
 
-      <!-- Simple feature grid -->
-      <section aria-label="Why K-Food">
-        <div class="grid" role="list">
-          <div class="card" role="listitem">
-            <h3>Authenticity with adaptability</h3>
-            <p>Traditional techniques meet modern convenience — from fermented staples to instant ramyeon innovations.</p>
-          </div>
-          <div class="card" role="listitem">
-            <h3>Global reach</h3>
-            <p>K-Food products and restaurants are expanding worldwide thanks to demand for bold, approachable flavors.</p>
-          </div>
-          <div class="card" role="listitem">
-            <h3>Culture-led growth</h3>
-            <p>Music, film, and media (Hallyu) amplify culinary curiosity — making food a gateway to culture.</p>
-          </div>
-        </div>
-      </section>
+          <hr style="margin:16px 0;border:none;border-top:1px solid #f0f0f0" />
 
-      <!-- News section: real articles included -->
-      <section id="news" aria-label="Latest K-Food news">
-        <h2 style="margin:0 0 12px">Latest K-Food news</h2>
-        <p style="margin:0 0 18px;color:var(--muted);max-width:75%">
-          Below are curated, recent news items about K-Food's global performance and cultural impact. (Sources are linked.)</p>
-
-        <div class="news-list">
-          <!-- News item 1 -->
-          <article class="news-item" aria-labelledby="n1">
-            <div class="news-thumb" aria-hidden="true">
-              <img src="https://via.placeholder.com/220x140?text=K-Food+Exports" alt="">
-            </div>
-            <div class="news-content">
-              <div class="news-meta">Oct 29, 2025 — KED Global</div>
-              <h3 id="n1" style="margin:0 0 6px;font-size:16px">Korean food exports hit record $8.5 bn in Jan–Sept, led by ramen & processed foods</h3>
-              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
-                South Korea's food exports reached an all-time high in the first nine months of 2025, with processed foods (instant noodles, packaged meals) leading growth due to strong global demand.
-              </p>
-              <a class="readmore" href="https://www.kedglobal.com/economy/newsView/ked202510290004" target="_blank" rel="noopener">Read original report ↗</a>
-            </div>
-          </article>
-
-          <!-- News item 2 -->
-          <article class="news-item" aria-labelledby="n2">
-            <div class="news-thumb" aria-hidden="true">
-              <img src="https://via.placeholder.com/220x140?text=Korea+Herald" alt="">
-            </div>
-            <div class="news-content">
-              <div class="news-meta">Oct 28, 2025 — The Korea Herald (Yonhap)</div>
-              <h3 id="n2" style="margin:0 0 6px;font-size:16px">K-Food exports through September hit record high</h3>
-              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
-                Customs data shows an increase in shipments to the U.S. and APEC economies; processed foods account for the biggest share of exports.
-              </p>
-              <a class="readmore" href="https://www.koreaherald.com/article/10602894" target="_blank" rel="noopener">Read original article ↗</a>
-            </div>
-          </article>
-
-          <!-- News item 3 -->
-          <article class="news-item" aria-labelledby="n3">
-            <div class="news-thumb" aria-hidden="true">
-              <img src="https://via.placeholder.com/220x140?text=KBS+World" alt="">
-            </div>
-            <div class="news-content">
-              <div class="news-meta">Oct 28, 2025 — KBS World</div>
-              <h3 id="n3" style="margin:0 0 6px;font-size:16px">K-Food exports through September hit $8.48 billion — record</h3>
-              <p style="margin-bottom:8px;color:var(--muted);font-size:14px">
-                Official reporting notes processed foods and instant noodles as top contributors to export growth in 2025.
-              </p>
-              <a class="readmore" href="https://world.kbs.co.kr/service/news_view.htm?Seq_Code=196953&lang=e" target="_blank" rel="noopener">Read original report ↗</a>
-            </div>
-          </article>
-        </div>
-
-      </section>
-
-      <!-- Gallery / demo images -->
-      <section id="gallery" aria-label="Gallery">
-        <h2 style="margin:16px 0">Gallery (demo images)</h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=800&auto=format&fit=crop&s=demo" alt="dish" style="width:100%;height:200px;object-fit:cover"></div>
-          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1543352634-ae0c3bd7f1a1?q=80&w=800&auto=format&fit=crop&s=demo" alt="ingredients" style="width:100%;height:200px;object-fit:cover"></div>
-          <div style="border-radius:10px;overflow:hidden"><img src="https://images.unsplash.com/photo-1604908177223-e8b37a7f6b2c?q=80&w=800&auto=format&fit=crop&s=demo" alt="table" style="width:100%;height:200px;object-fit:cover"></div>
-        </div>
-      </section>
-
-      <div class="footer" id="contact">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
           <div>
-            <div style="font-weight:700">K-Food Showcase</div>
-            <div style="color:var(--muted);font-size:13px">For international audiences — curated by you</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:13px;color:var(--muted)">Sources: KED Global, Korea Herald (Yonhap), KBS World.</div>
-            <div style="margin-top:8px"><a href="#" style="text-decoration:none;color:var(--muted)">Privacy</a> · <a href="#" style="text-decoration:none;color:var(--muted)">Credits</a></div>
+            <div style="font-weight:600;margin-bottom:8px">관련 뉴스</div>
+            <div id="news" class="news-list">
+              <!-- 뉴스 항목이 여기로 로드됩니다. 데모 이미지 포함 -->
+            </div>
           </div>
         </div>
-      </div>
 
-    </main>
-  </div>
+        <div class="card" style="margin-top:16px">
+          <div style="font-weight:600;margin-bottom:8px">간단한 메모</div>
+          <div class="small">이 페이지는 데모용입니다. 네이버 원본 페이지의 시각적 느낌을 참고해 미니멀하고 전문적으로 구성했습니다. 실제 네이버 데이터를 가져오려면 아래의 서버 프록시를 사용하세요.</div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <div style="font-weight:600;margin-bottom:12px">실시간 위젯</div>
+          <div class="small">현재 시각 (현지): <div id="clock" style="font-weight:700;margin-top:6px"></div></div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f0f0f0" />
+
+          <div style="font-weight:600;margin-bottom:8px">빠른링크</div>
+          <ul class="small" style="padding-left:18px;margin:0">
+            <li><a href="https://finance.naver.com/marketindex/" target="_blank">네이버 환율 (원본)</a></li>
+            <li><a href="https://exchangerate.host/" target="_blank">공개 환율 API (대체)</a></li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div style="font-weight:600;margin-bottom:8px">설정</div>
+          <div class="small">통화: <select id="currencySelect"><option value="USD">USD → KRW</option></select></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    이 페이지는 데모이며, 네이버의 데이터는 CORS 제한으로 인해 브라우저에서 직접 가져올 수 없습니다. 아래의 서버 프록시(예: Node/Express) 예시를 참고해 서버 측에서 네이버 페이지를 스크래핑하거나 API를 통해 중계하면 브라우저에서 네이버 환율을 표시할 수 있습니다.
+  </footer>
+
+  <!--
+    아래는 개발자용 안내 (Node.js 간단 프록시 예시)
+
+    1) Node/Express 서버를 사용해 네이버 환율 페이지를 요청하고 필요한 값만 파싱해 JSON으로 반환하세요.
+    2) 예: /api/naver-exchange?pair=USDKRW
+    3) 브라우저는 이 JSON을 받아 화면에 표시합니다. (CORS 설정 필요)
+
+    server.js (간단 예시)
+
+    const express = require('express');
+    const fetch = require('node-fetch');
+    const cheerio = require('cheerio');
+    const app = express();
+    app.use(require('cors')());
+
+    app.get('/api/naver-exchange', async (req, res) => {
+      // 네이버 환율 페이지 URL (예시)
+      const url = 'https://finance.naver.com/marketindex/exchangeDetail.naver?marketindexCd=FX_USDKRW';
+      const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      const text = await r.text();
+      const $ = cheerio.load(text);
+      // 페이지 구조에 따라 선택자 변경 필요
+      const rate = parseFloat($('#content > div.head_info > div > span.value').first().text().replace(',',''));
+      const changeText = $('#content > div.head_info > p').text().trim();
+      res.json({rate, changeText, source:'naver', fetchedAt: new Date().toISOString()});
+    });
+
+    app.listen(3000, ()=>console.log('proxy running 3000'));
+
+    -->
+
+  <script>
+    // UI 업데이트 로직
+    const rateEl = document.getElementById('rate');
+    const changeEl = document.getElementById('rate-change');
+    const updatedEl = document.getElementById('rate-updated');
+    const sourceEl = document.getElementById('source');
+    const headerTime = document.getElementById('header-time');
+    const clock = document.getElementById('clock');
+    const newsEl = document.getElementById('news');
+
+    function formatDateISO(d){
+      const pad=(n)=>String(n).padStart(2,'0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    }
+
+    function updateClock(){
+      const now = new Date();
+      headerTime.textContent = '한국 시각: ' + formatDateISO(now);
+      clock.textContent = formatDateISO(now);
+    }
+    updateClock(); setInterval(updateClock,1000);
+
+    // 실제 네이버 환율을 브라우저에서 직접 불러오려면 CORS 문제로 불가합니다.
+    // 아래 fetchRate()는 우선순위: 1) /api/naver-exchange (서버 프록시) 2) exchangerate.host 공용 API (fallback)
+
+    async function fetchRate(){
+      try{
+        // 1) 시도: 자체 프록시 경로 (사용자/개발자가 서버에 구현해야 함)
+        const proxyUrl = '/api/naver-exchange?pair=USDKRW';
+        const r = await fetch(proxyUrl);
+        if(r.ok){
+          const j = await r.json();
+          if(j.rate){
+            displayRate(j.rate, j.changeText || '');
+            sourceEl.textContent = '네이버환율 (프록시)';
+            updatedEl.textContent = '업데이트: ' + (j.fetchedAt ? new Date(j.fetchedAt).toLocaleString() : new Date().toLocaleString());
+            return;
+          }
+        }
+      }catch(e){
+        console.warn('프록시에서 네이버 환율 불러오기 실패:', e);
+      }
+
+      // 2) fallback: exchangerate.host (공개 무료 API)
+      try{
+        const r2 = await fetch('https://api.exchangerate.host/latest?base=USD&symbols=KRW');
+        const j2 = await r2.json();
+        if(j2 && j2.rates && j2.rates.KRW){
+          displayRate(j2.rates.KRW, 'fallback API');
+          sourceEl.textContent = 'exchangerate.host (대체)';
+          updatedEl.textContent = '업데이트: ' + new Date(j2.date + 'T00:00:00').toLocaleString();
+          return;
+        }
+      }catch(e){
+        console.error('fallback API 실패', e);
+      }
+
+      // 3) 최후의 수단: 더미 값
+      displayRate('--', '데이터 없음');
+      sourceEl.textContent = '데모';
+      updatedEl.textContent = '업데이트: --';
+    }
+
+    function displayRate(rate, changeText){
+      if(typeof rate === 'number'){
+        rateEl.textContent = rate.toLocaleString('ko-KR', {maximumFractionDigits: 2});
+      }else{
+        rateEl.textContent = rate;
+      }
+      changeEl.textContent = changeText || '';
+    }
+
+    // 뉴스 로드 (프록시를 통한 네이버 뉴스나 대체 소스 사용 권장). 데모 항목으로 시작합니다.
+    const demoNews = [
+      {title:'미국 금리 발표에 따른 달러 강세…원화 영향은?', source:'연합뉴스', img:'https://via.placeholder.com/240x144?text=News+1', url:'#'},
+      {title:'외환시장 동향: 수출·수입 기업이 주목할 포인트', source:'매일경제', img:'https://via.placeholder.com/240x144?text=News+2', url:'#'},
+      {title:'달러/원 변동성 확대, 투자자 포트폴리오 대응법', source:'한국경제', img:'https://via.placeholder.com/240x144?text=News+3', url:'#'}
+    ];
+
+    function renderNews(list){
+      newsEl.innerHTML = '';
+      list.forEach(n => {
+        const item = document.createElement('div');
+        item.className = 'news-item';
+        item.innerHTML = `
+          <img class="news-thumb" src="${n.img}" alt="thumb" onerror="this.src='https://via.placeholder.com/240x144?text=No+Image'" />
+          <div class="news-body">
+            <a class="news-title" href="${n.url}" target="_blank">${n.title}</a>
+            <div class="news-source">${n.source}</div>
+          </div>
+        `;
+        newsEl.appendChild(item);
+      });
+    }
+
+    renderNews(demoNews);
+
+    // 자동 갱신
+    fetchRate();
+    const REFRESH_INTERVAL = 30 * 1000; // 30초
+    setInterval(fetchRate, REFRESH_INTERVAL);
+
+  </script>
 </body>
 </html>

@@ -1,157 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binggrae - Taste of Korea</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>K-Food Promo — Landing Page Concept</title>
+  <meta name="description" content="K-Food 홍보 랜딩 페이지 (타겟: 한국 문화에 관심 있는 외국인). 미니멀 · 전문적 톤의 UX/UI 기획 + 최신 뉴스 첨부." />
   <style>
-    body {
-      font-family: 'Noto Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #222;
-      background-color: #ffffff;
+    :root{
+      --bg:#ffffff; --surface:#f7fbfb; --text:#0b1220; --muted:#6b7280; --accent:#0ea5a4;
+      --radius:12px; --gap:20px; font-family:Inter, "Noto Sans KR", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
-    section {
-      padding: 80px 10%;
-      border-bottom: 1px solid #f1f1f1;
-    }
-    h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    h3 {
-      color: #ff4444;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1.5px;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 800px;
-    }
-    .hero {
-      background: url('https://example.com/images/binggrae-main.jpg') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 200px 10%;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
-    }
-    .card {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 20px;
-    }
-    footer {
-      background: #fafafa;
-      text-align: center;
-      padding: 40px;
-      font-size: 0.9rem;
-      color: #777;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+    .wrap{max-width:1100px;margin:32px auto;padding:28px;background:linear-gradient(180deg,#fff,#fbffff);border-radius:14px;box-shadow:0 10px 30px rgba(13,24,24,0.06);}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#e6fffb,#ffffff);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent)}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .section{margin-top:18px;padding:18px;border-radius:12px;background:var(--surface)}
+    .section h2{margin:0 0 8px;font-size:16px}
+    .core-copy{font-weight:700;margin-bottom:8px}
+    .ideas{color:var(--muted);line-height:1.6;font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+    .card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 6px 20px rgba(13,24,24,0.04)}
+    .product-img{height:140px;background:#f3f7f7;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    .cta{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:var(--accent);color:white;text-decoration:none;font-weight:600}
+    .news-list{list-style:none;padding:0;margin:0}
+    .news-item{padding:10px 12px;border-radius:8px;background:white;margin-bottom:10px;display:flex;flex-direction:column;gap:6px;box-shadow:0 6px 14px rgba(13,24,24,0.03)}
+    .muted{color:var(--muted);font-size:13px}
+    footer{margin-top:20px;color:var(--muted);font-size:13px}
+    a.plain{color:inherit;text-decoration:none}
+    @media(max-width:720px){.wrap{margin:16px;padding:16px}}
   </style>
 </head>
-
 <body>
+  <main class="wrap" role="main" aria-labelledby="main-title">
+    <header>
+      <div class="logo" aria-hidden="true">K-FOOD</div>
+      <div>
+        <h1 id="main-title">K-Food Promo — Landing Page Concept</h1>
+        <p class="lead">Target: foreigners curious about Korean culture · Tone: Minimal & Professional</p>
+      </div>
+    </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>Bringing Happiness Through K-Food</h1>
-    <p>Binggrae creates the best customer value for the health and happiness of the people.</p>
-  </section>
+    <!-- Mandatory brand phrase -->
+    <section class="section" aria-label="brand-statement">
+      <h2>Brand Statement (required)</h2>
+      <div class="core-copy">빙그레는 국민의 건강과 행복을 위해 최상의 고객 가치를 만듭니다.</div>
+      <div class="ideas">
+        Show this sentence in Korean and English near the top (under hero) and again in the footer. English example: <em>"Binggrae creates the highest customer value for the health and happiness of the people."</em>
+      </div>
+    </section>
 
-  <!-- BRAND STORY -->
-  <section>
-    <h3>01. Brand Story</h3>
-    <h2>The Taste of Korea, Loved for Generations</h2>
-    <p>
-      Founded in 1967, Binggrae has been a symbol of Korean taste and happiness. From traditional dairy products to modern K-snacks, we deliver the essence of Korea to the world.
-    </p>
-    <p>
-      <strong>Core Message:</strong> "Binggrae is dedicated to creating the best customer value for the health and happiness of the people."
-    </p>
-  </section>
+    <!-- Hero -->
+    <section class="section" aria-label="hero">
+      <h2>Hero — First Impression</h2>
+      <div class="core-copy">Core copy: <strong>“Taste Korea — Tradition meets modern delight”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>Layout: Split hero — left: large clean product photograph (demo image allowed), right: short headline, subcopy + 2 CTAs (Explore Products / See Recipes).</li>
+          <li>Visual: Highlight two icons/products: <strong>Banana Milk</strong> and <strong>Melona</strong> (these must appear in hero or first fold).</li>
+          <li>Microcopy: language switcher (EN default), accessibility hint, and small trust line referencing Korea's rising K-Food exports (news-backed — see News section).</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- SIGNATURE PRODUCTS -->
-  <section>
-    <h3>02. Signature Products</h3>
-    <h2>Icons of K-Food: Banana Milk & Melona</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://example.com/images/banana-milk.jpg" alt="Banana Milk">
-        <div class="card-content">
-          <h3>Banana Milk</h3>
-          <p>
-            A beloved Korean classic since 1974. With its soft banana flavor and unique bottle design, Banana Milk brings comfort and nostalgia to every sip.
-          </p>
+    <!-- Products -->
+    <section class="section" aria-label="products">
+      <h2>Products — Signature & Category Showcase</h2>
+      <div class="core-copy">Core copy: <strong>“Iconic & Contemporary — From Banana Milk to Melona”</strong></div>
+      <div class="ideas">
+        <div class="grid" role="list">
+          <article class="card" role="listitem" aria-label="Banana Milk">
+            <div class="product-img">Banana Milk (visual demo)</div>
+            <div style="margin-top:10px;font-weight:700">Banana Milk</div>
+            <div class="muted">Creamy, nostalgic dairy drink — widely exported and loved.</div>
+            <a class="cta" href="#recipes">Try a Recipe</a>
+          </article>
+
+          <article class="card" role="listitem" aria-label="Melona">
+            <div class="product-img">Melona (visual demo)</div>
+            <div style="margin-top:10px;font-weight:700">Melona</div>
+            <div class="muted">Melon-flavored ice bar with global presence in convenience stores & retailers.</div>
+            <a class="cta" href="#products">Learn More</a>
+          </article>
+
+          <article class="card" role="listitem" aria-label="Categories">
+            <div class="product-img">Snacks · Dairy · Drinks</div>
+            <div style="margin-top:10px;font-weight:700">Categories</div>
+            <div class="muted">Ice cream, dairy, snacks, beverages, and health-oriented foods — all framed as K-Food.</div>
+            <a class="cta" href="#catalog">Explore Catalog</a>
+          </article>
         </div>
       </div>
-      <div class="card">
-        <img src="https://example.com/images/melona.jpg" alt="Melona Ice Cream">
-        <div class="card-content">
-          <h3>Melona</h3>
-          <p>
-            The world-famous Korean ice cream bar known for its creamy texture and refreshing melon flavor. A true global K-dessert icon.
-          </p>
-        </div>
+    </section>
+
+    <!-- Story / K-Food context -->
+    <section class="section" aria-label="story">
+      <h2>K-Food Story & Positioning</h2>
+      <div class="core-copy">Core copy: <strong>“Tradition + Innovation — a modern K-Food narrative”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>Short editorial blocks explaining fermentation heritage, seasonal snacks, and how K-Food fits into global trends (health, convenience, fusion).</li>
+          <li>Include short explainer tiles (e.g., "Why K-Food now?", "Health & fermentation", "Street food → Global plates").</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CATEGORY SHOWCASE -->
-  <section>
-    <h3>03. Our Products</h3>
-    <h2>From Ice Cream to Health Food – Discover Korea’s Taste Spectrum</h2>
-    <div class="grid">
-      <div class="card"><img src="https://example.com/images/icecream.jpg" alt="Ice Cream"><div class="card-content"><h3>Ice Cream</h3><p>Refreshing treats blending creativity and quality.</p></div></div>
-      <div class="card"><img src="https://example.com/images/dairy.jpg" alt="Dairy"><div class="card-content"><h3>Dairy Products</h3><p>From milk to yogurt, nutrition meets taste.</p></div></div>
-      <div class="card"><img src="https://example.com/images/snack.jpg" alt="Snacks"><div class="card-content"><h3>Snacks & Desserts</h3><p>Modern Korean flavors that surprise and delight.</p></div></div>
-      <div class="card"><img src="https://example.com/images/health.jpg" alt="Health Food"><div class="card-content"><h3>Health Food</h3><p>Balanced nutrition for a modern lifestyle.</p></div></div>
-    </div>
-  </section>
+    <!-- Recipes -->
+    <section id="recipes" class="section" aria-label="recipes">
+      <h2>Recipes & Quick How-tos</h2>
+      <div class="core-copy">Core copy: <strong>“Simple K-Food recipes using Binggrae favorites”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>Recipe cards (photo, 3 steps) — example: Banana Milk Smoothie, Melona Parfait. Include short video thumbnails (demo assets fine).</li>
+          <li>Buttons for "Print", "Save", and "Share" to encourage social spread (OG tags & structured data recommended).</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- GLOBAL MESSAGE -->
-  <section>
-    <h3>04. Global Vision</h3>
-    <h2>Expanding K-Food to the World</h2>
-    <p>
-      Binggrae aims to share Korea’s warmth and happiness globally through trusted quality and beloved taste. We connect cultures through food, bringing smiles across continents.
-    </p>
-  </section>
+    <!-- Store locator / Buy -->
+    <section id="catalog" class="section" aria-label="store-locator">
+      <h2>Where to Buy — Global Reach</h2>
+      <div class="core-copy">Core copy: <strong>“Find K-Food near you — stores & online”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>Interactive store finder (country selector → city → store list). Show which signature items (Banana Milk / Melona) are stocked.</li>
+          <li>Quick links to major international retailers when available (Costco, local convenience chains) and info about export expansion.</li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Binggrae © 2025. All Rights Reserved. | Taste of Korea, Shared with the World.</p>
-  </footer>
+    <!-- Campaign / Social -->
+    <section class="section" aria-label="campaigns">
+      <h2>Campaigns & Social Proof</h2>
+      <div class="core-copy">Core copy: <strong>“#TasteKorea — share your K-Food moment”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>SNS feed embed (Instagram / TikTok hashtag stream), UGC gallery, contest CTA to drive sampling and recipe shares.</li>
+          <li>Localized campaign tiles per region (language, prize, partner retailer).</li>
+        </ul>
+      </div>
+    </section>
 
+    <!-- News (actual articles fetched and attached) -->
+    <section class="section" aria-label="news">
+      <h2>News & Context — Recent coverage (selected)</h2>
+      <p class="muted">Below are curated news items to anchor the landing page's credibility; keep these as live links so content managers can update snippets automatically.</p>
+
+      <ul class="news-list" aria-live="polite">
+        <li class="news-item">
+          <a class="plain" href="https://www.koreaherald.com/article/10603151" target="_blank" rel="noopener noreferrer">
+            <strong>K-food exports hit record driven by US demand</strong>
+          </a>
+          <div class="muted">Processed foods led exports, showing strong global appetite for Korean packaged foods. :contentReference[oaicite:0]{index=0}</div>
+        </li>
+
+        <li class="news-item">
+          <a class="plain" href="https://www.foodnavigator-asia.com/Article/2024/12/12/binggrae-eyes-australia-as-key-market-for-global-expansion/" target="_blank" rel="noopener noreferrer">
+            <strong>Binggrae eyes Australia as key market for global expansion</strong>
+          </a>
+          <div class="muted">Binggrae reported tripled sales in some European Asian-mart channels and is expanding Melona and ice bar lines to overseas markets. :contentReference[oaicite:1]{index=1}</div>
+        </li>
+
+        <li class="news-item">
+          <a class="plain" href="https://biz.chosun.com/en/en-retail/2025/10/27/BJTVHCVA35GOPIPFFYNBP7G2AI/" target="_blank" rel="noopener noreferrer">
+            <strong>Binggrae expands banana milk exports with sterilized product</strong>
+          </a>
+          <div class="muted">New sterilized banana milk SKUs increase shelf-stable exports to over 30 countries. :contentReference[oaicite:2]{index=2}</div>
+        </li>
+
+        <li class="news-item">
+          <a class="plain" href="https://world.kbs.co.kr/service/news_view.htm?Seq_Code=196953&lang=e" target="_blank" rel="noopener noreferrer">
+            <strong>K-Food exports through September hit record ~$8.48B</strong>
+          </a>
+          <div class="muted">Latest national export figures show record growth, reinforcing the global K-Food wave. :contentReference[oaicite:3]{index=3}</div>
+        </li>
+
+        <li class="news-item">
+          <a class="plain" href="https://www.washingtonpost.com/food/2025/03/17/kimbap-korean-cuisine-globally-popular/" target="_blank" rel="noopener noreferrer">
+            <strong>Kimbap example: Korean dishes gaining mainstream traction</strong>
+          </a>
+          <div class="muted">Coverage of kimbap's international popularity illustrates how media/entertainment boosts food trends. :contentReference[oaicite:4]{index=4}</div>
+        </li>
+      </ul>
+
+      <div class="ideas" style="margin-top:8px">
+        <strong>Editorial note:</strong> Display each news item with a published date and publisher logo on the live site; refresh programmatically (RSS or News API) to keep the landing page current.
+      </div>
+    </section>
+
+    <!-- Metrics & Launch checklist -->
+    <section class="section" aria-label="metrics">
+      <h2>Metrics & Launch Checklist</h2>
+      <div class="core-copy">Core copy: <strong>“Measure to improve”</strong></div>
+      <div class="ideas">
+        <ul>
+          <li>KPI suggestions: country visits, product detail CTR (Banana Milk / Melona), recipe play rate, hashtag uses, store-locator clicks.</li>
+          <li>Pre-launch: multi-language proofing, GDPR/region privacy, mobile UX testing, CDN image pipeline, SEO (schema for products & recipes).</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <div class="muted">Design tone: Minimal · Professional. Images are demo placeholders; replace with approved hero & product photography. © K-Food Promo Concept</div>
+      <div style="margin-top:8px" class="muted">Sources: curated news used above to reflect current K-Food trends and Binggrae activity. :contentReference[oaicite:5]{index=5}</div>
+    </footer>
+  </main>
 </body>
 </html>
